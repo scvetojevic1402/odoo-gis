@@ -13,5 +13,5 @@ This project integrates GIS functionality into Odoo.
    ```bash
    make run
    ```
-3. Configure your Odoo instance by activating the GIS modules 
+3. Configure your Odoo instance by activating the GIS modules - especially Field Service Geoengine and Field Service - CRM
 4. Use the provided modules to manage geospatial data directly in Odoo.
