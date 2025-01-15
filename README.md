@@ -24,6 +24,9 @@ This project integrates GIS functionality into Odoo.
    make run
    ```
 
+Note: Docker uses a volume for PostgreSQL data, so your data will persist across runs. This means that even if you stop and restart the containers, your data will remain intact.
+
+
 ## Using Odoo GIS
 
 After running the project with `make run`, follow these steps to use Odoo GIS:
@@ -33,7 +36,7 @@ After running the project with `make run`, follow these steps to use Odoo GIS:
    ![Login](assets/Screen_1_click_on_manage_databases.png)
 
 2. **Create a Database**
-   Fill out the form. Use your master password from odoo.conf, your email, odoo_db as the database name and choose your password. Also check `Demo Data` option.
+   Fill out the form. Use your master password from odoo.conf, your email, odoo_db as the database name and choose your password. Also check `Demo Data` option and finally click on `Create Database`.
    ![Navigate to Apps](assets/Screen_2_create_database.png)
 
 3. **Login**
