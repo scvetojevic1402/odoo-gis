@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgis/postgis:16-3.5
+    ports:
+      - "5435:5432" 
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo18
+      - POSTGRES_PASSWORD=odoo
+    volumes:
+      - odoo18-db-data:/var/lib/postgresql/data
+
+  odoo_web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8069:8069"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=odoo16
+      - DB_PASSWORD=odoo
+    volumes:
+      - ./addons:/addons
+      - ./odoo.conf:/etc/odoo/odoo.conf
+      - odoo16-web-data:/var/lib/odoo
+
+volumes:
+  odoo16-web-data:
+  odoo16-db-data:
