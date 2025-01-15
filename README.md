@@ -10,12 +10,16 @@ This project integrates GIS functionality into Odoo.
 ## Prerequisites
 - Docker needs to be installed and running on your system.
 
-## Installation and Usage
+## Installation
 1. Clone the repository
    ```bash
    git clone https://github.com/scvetojevic1402/odoo-gis
    ```
-2. Run the project
+2. Change into the project directory
+   ```bash
+    cd odoo-gis
+    ```
+3. Run the project
    ```bash
    make run
    ```
