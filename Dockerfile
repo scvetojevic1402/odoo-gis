@@ -8,6 +8,7 @@ RUN git clone --branch 16.0 https://github.com/OCA/geospatial.git /mnt/extra-add
 RUN git clone --branch 16.0 https://github.com/OCA/timesheet.git /mnt/extra-addons/timesheet
 RUN git clone --branch 16.0 https://github.com/OCA/field-service.git /mnt/extra-addons/field-service
 RUN git clone --branch 16.0 https://github.com/avanzosc/odoo-addons.git /mnt/extra-addons/avanzosc
+RUN git clone --branch 16.0 https://github.com/OCA/web.git /mnt/extra-addons/web
 
 
 EXPOSE 8069
