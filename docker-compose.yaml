@@ -4,6 +4,7 @@ services:
     ports:
       - "5435:5432" 
     environment:
+      - POSTGRES_DB=odoo16
       - POSTGRES_DB=postgres
       - POSTGRES_USER=odoo16
       - POSTGRES_PASSWORD=odoo
@@ -21,11 +22,23 @@ services:
       - DB_PORT=5432
       - DB_USER=odoo16
       - DB_PASSWORD=odoo
+      - DB_NAME=odoo16
     volumes:
-      # - ./addons:/addons
+      - ./extra-addons/geospatial:/mnt/extra-addons/geospatial
+      - ./extra-addons/timesheet:/mnt/extra-addons/timesheet
+      - ./extra-addons/field-service:/mnt/extra-addons/field-service
+      - ./extra-addons/avanzosc:/mnt/extra-addons/avanzosc
+      - ./extra-addons/web:/mnt/extra-addons/web
+      - ./extra-addons/partner-contact:/mnt/extra-addons/partner-contact
+      - ./jbm_addons:/mnt/jbm_addons
       - ./odoo.conf:/etc/odoo/odoo.conf
       - odoo16-web-data:/var/lib/odoo
+    command: odoo -u project_map
+    # command: odoo -u base,\
+    #           base_geoengine,base_geoengine_demo,base_geolocalize,base_geolocalize_company,\
+    #           timesheet,field_service,avanzosc,web,partner_contact,project_map
 
 volumes:
   odoo16-web-data:
   odoo16-db-data:
+  

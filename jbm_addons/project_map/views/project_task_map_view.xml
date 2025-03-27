@@ -1,0 +1,69 @@
+<odoo>
+
+    <record id="view_task_form_inherit_location" model="ir.ui.view">
+        <field name="name">project.task.form.location</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <group position="after">
+                <group string="Location" col="2">
+                    <!-- Label: "Task Address" (generated from the field definition) -->
+                    <!-- Input Box: Text input for task_address -->
+                    <field name="task_address"/>
+                    
+                    <!-- Label: "Latitude" (generated from the field definition) -->
+                    <!-- Input Box: Map widget for partner_latitude -->
+                    <field name="partner_latitude" widget="map"/>
+                    
+                    <!-- Label: "Longitude" (generated from the field definition) -->
+                    <!-- Input Box: Text input for partner_longitude -->
+                    <field name="partner_longitude"/>
+                    
+                    <!-- Button: Geocode Address -->
+                    <button name="geocode_address" type="object" string="Geocode Address" class="oe_highlight"/>
+                    
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="view_project_task_map" model="ir.ui.view">
+        <field name="name">project.task.map.view</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <geoengine string="Task Locations" geo_field="geo_point">
+                <field name="name"/>
+                <field name="geo_point"/>
+                <field name="partner_latitude"/>
+                <field name="partner_longitude"/>
+                <field name="project_id"/>
+                <field name="project_name" string="Project"/>
+                
+                <templates>
+                    <t t-name="info_box">
+                        <div>
+                            <strong>Task: <t t-esc="record.name"/></strong><br/>
+                            <span>Project: <t t-esc="record.project_id[1]"/></span><br/>
+                            <span>Latitude: <t t-esc="record.partner_latitude"/></span><br/>
+                            <span>Longitude: <t t-esc="record.partner_longitude"/></span>
+                            <span>Geo: <t t-esc="record.geo_point"/></span>
+                        </div>
+                    </t>
+                </templates>
+            </geoengine>
+        </field>
+    </record>
+
+    <record id="action_project_task_map" model="ir.actions.act_window">
+        <field name="name">Task Map</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">kanban,tree,form,geoengine</field>
+        <field name="view_id" ref="view_project_task_map"/>
+    </record>
+
+    <menuitem id="menu_project_task_map"
+              name="Task Map"
+              parent="project.menu_main_pm"
+              action="action_project_task_map"
+              sequence="15"/>
+</odoo>
